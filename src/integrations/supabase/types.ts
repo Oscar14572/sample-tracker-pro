@@ -14,7 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      ingresos: {
+        Row: {
+          actualizado_en: string
+          cliente: string | null
+          codigo_proyecto: string | null
+          confianza_extraccion: number | null
+          creado_en: string
+          entregado_por: string | null
+          estado_ingreso: string
+          fecha_recepcion: string | null
+          fecha_remision: string | null
+          fecha_revision: string | null
+          ingreso_id: string
+          numero_ingreso: string | null
+          observaciones_ingreso: string | null
+          proyecto: string | null
+          recibido_por: string | null
+          requiere_revision: boolean
+          revisado_por: string | null
+          tipo_origen: string
+          ubicacion: string | null
+        }
+        Insert: {
+          actualizado_en?: string
+          cliente?: string | null
+          codigo_proyecto?: string | null
+          confianza_extraccion?: number | null
+          creado_en?: string
+          entregado_por?: string | null
+          estado_ingreso?: string
+          fecha_recepcion?: string | null
+          fecha_remision?: string | null
+          fecha_revision?: string | null
+          ingreso_id?: string
+          numero_ingreso?: string | null
+          observaciones_ingreso?: string | null
+          proyecto?: string | null
+          recibido_por?: string | null
+          requiere_revision?: boolean
+          revisado_por?: string | null
+          tipo_origen?: string
+          ubicacion?: string | null
+        }
+        Update: {
+          actualizado_en?: string
+          cliente?: string | null
+          codigo_proyecto?: string | null
+          confianza_extraccion?: number | null
+          creado_en?: string
+          entregado_por?: string | null
+          estado_ingreso?: string
+          fecha_recepcion?: string | null
+          fecha_remision?: string | null
+          fecha_revision?: string | null
+          ingreso_id?: string
+          numero_ingreso?: string | null
+          observaciones_ingreso?: string | null
+          proyecto?: string | null
+          recibido_por?: string | null
+          requiere_revision?: boolean
+          revisado_por?: string | null
+          tipo_origen?: string
+          ubicacion?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
