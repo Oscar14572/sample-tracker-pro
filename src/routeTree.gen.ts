@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as IngresosIndexRouteImport } from './routes/ingresos.index'
+import { Route as IngresosNuevoRouteImport } from './routes/ingresos.nuevo'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const IngresosIndexRoute = IngresosIndexRouteImport.update({
   path: '/ingresos/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IngresosNuevoRoute = IngresosNuevoRouteImport.update({
+  id: '/ingresos/nuevo',
+  path: '/ingresos/nuevo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ingresos/nuevo': typeof IngresosNuevoRoute
   '/ingresos/': typeof IngresosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ingresos/nuevo': typeof IngresosNuevoRoute
   '/ingresos': typeof IngresosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ingresos/nuevo': typeof IngresosNuevoRoute
   '/ingresos/': typeof IngresosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ingresos/'
+  fullPaths: '/' | '/ingresos/nuevo' | '/ingresos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ingresos'
-  id: '__root__' | '/' | '/ingresos/'
+  to: '/' | '/ingresos/nuevo' | '/ingresos'
+  id: '__root__' | '/' | '/ingresos/nuevo' | '/ingresos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  IngresosNuevoRoute: typeof IngresosNuevoRoute
   IngresosIndexRoute: typeof IngresosIndexRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IngresosIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ingresos/nuevo': {
+      id: '/ingresos/nuevo'
+      path: '/ingresos/nuevo'
+      fullPath: '/ingresos/nuevo'
+      preLoaderRoute: typeof IngresosNuevoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  IngresosNuevoRoute: IngresosNuevoRoute,
   IngresosIndexRoute: IngresosIndexRoute,
 }
 export const routeTree = rootRouteImport
